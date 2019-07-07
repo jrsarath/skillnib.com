@@ -42,7 +42,8 @@
             }
           }
       });
-          // ACCOUNT SUB ROUTES
+      // ACCOUNT SUB ROUTES
+          // EDIT ORG
           $router->get('/account/edit', function() {
               global $view;
               $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/edit-org.php";
@@ -51,6 +52,16 @@
               global $view;
               $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/edit-org.php";
           });
+          // ADD INSTITUTE
+          $router->get('/account/add/institute', function() {
+              global $view;
+              $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/add-institute.php";
+          });
+          $router->post('/account/add/institute', function() {
+              global $view;
+              $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/add-institute.php";
+          });
+
       // Authentications
       $router->get('/signup', function() {
           global $view;

@@ -144,26 +144,36 @@
 }
 
 </style>
-<div class="wrapper">
-  <div class="align">
-    <div class="grid">
+<div class="alice-bg padding-top-60 section-padding-bottom">
+  <div class="container no-gliters">
+    <div class="row no-gliters">
+      <div class="col">
+        <div class="dashboard-container company-details row">
+          <div class="wrapper">
+            <div class="align">
+              <div class="grid">
 
-          <div class="grid__row">
+                    <div class="grid__row">
 
-            <div class="grid__col">
-              <div class="box animation animation--shake--vertical">4</div>
+                      <div class="grid__col">
+                        <div class="box animation animation--shake--vertical">4</div>
+                      </div>
+
+                      <div class="grid__col">
+                        <div class="box animation animation--reverse animation--shake--vertical">0</div>
+                      </div>
+
+                      <div class="grid__col">
+                        <div class="box animation animation--shake--vertical">4</div>
+                      </div>
+
+                    </div>
+
+                  </div>
             </div>
-
-            <div class="grid__col">
-              <div class="box animation animation--reverse animation--shake--vertical">0</div>
-            </div>
-
-            <div class="grid__col">
-              <div class="box animation animation--shake--vertical">4</div>
-            </div>
-
           </div>
-
         </div>
+      </div>
+    </div>
   </div>
 </div>
