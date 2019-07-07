@@ -116,14 +116,14 @@
                       <div class="card-body pb-0">
                         <h5 class="card-title">Add a New College</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="/account/add/colleges" class="btn btn-primary">Add College</a>
+                        <a href="/account/add/college" class="btn btn-primary">Add College</a>
                       </div>
                     </div>
                     <div class="card shadow my-4 rounded p-4">
                       <div class="card-body pb-0">
                         <h5 class="card-title">Add a new Tution Below XII</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="/account/add/tuitions" class="btn btn-primary">Add Tution Below XII</a>
+                        <a href="/account/add/tuition" class="btn btn-primary">Add Tution Below XII</a>
                       </div>
                     </div>
                     <div class="card shadow my-4 rounded p-4">
