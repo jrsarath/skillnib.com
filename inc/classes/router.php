@@ -45,11 +45,11 @@
           // ACCOUNT SUB ROUTES
           $router->get('/account/edit', function() {
               global $view;
-              $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/edit.php";
+              $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/edit-org.php";
           });
           $router->post('/account/edit', function() {
               global $view;
-              $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/edit.php";
+              $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/edit-org.php";
           });
       // Authentications
       $router->get('/signup', function() {
