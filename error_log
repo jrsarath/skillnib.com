@@ -4688,3 +4688,30 @@
 [07-Jul-2019 01:05:14 UTC] PHP Warning:  include(): Failed opening '' for inclusion (include_path='.;C:\php\pear') in D:\Server\Wamp\www\skillnib\index.php on line 26
 [07-Jul-2019 01:05:14 UTC] PHP Stack trace:
 [07-Jul-2019 01:05:14 UTC] PHP   1. {main}() D:\Server\Wamp\www\skillnib\index.php:0
+[07-Jul-2019 01:15:14 UTC] PHP Notice:  Undefined variable: view in D:\Server\Wamp\www\skillnib\index.php on line 26
+[07-Jul-2019 01:15:14 UTC] PHP Stack trace:
+[07-Jul-2019 01:15:14 UTC] PHP   1. {main}() D:\Server\Wamp\www\skillnib\index.php:0
+[07-Jul-2019 01:15:14 UTC] PHP Warning:  include(): Filename cannot be empty in D:\Server\Wamp\www\skillnib\index.php on line 26
+[07-Jul-2019 01:15:14 UTC] PHP Stack trace:
+[07-Jul-2019 01:15:14 UTC] PHP   1. {main}() D:\Server\Wamp\www\skillnib\index.php:0
+[07-Jul-2019 01:15:14 UTC] PHP Warning:  include(): Failed opening '' for inclusion (include_path='.;C:\php\pear') in D:\Server\Wamp\www\skillnib\index.php on line 26
+[07-Jul-2019 01:15:14 UTC] PHP Stack trace:
+[07-Jul-2019 01:15:14 UTC] PHP   1. {main}() D:\Server\Wamp\www\skillnib\index.php:0
+[07-Jul-2019 01:15:15 UTC] PHP Notice:  Undefined variable: view in D:\Server\Wamp\www\skillnib\index.php on line 26
+[07-Jul-2019 01:15:15 UTC] PHP Stack trace:
+[07-Jul-2019 01:15:15 UTC] PHP   1. {main}() D:\Server\Wamp\www\skillnib\index.php:0
+[07-Jul-2019 01:15:15 UTC] PHP Warning:  include(): Filename cannot be empty in D:\Server\Wamp\www\skillnib\index.php on line 26
+[07-Jul-2019 01:15:15 UTC] PHP Stack trace:
+[07-Jul-2019 01:15:15 UTC] PHP   1. {main}() D:\Server\Wamp\www\skillnib\index.php:0
+[07-Jul-2019 01:15:15 UTC] PHP Warning:  include(): Failed opening '' for inclusion (include_path='.;C:\php\pear') in D:\Server\Wamp\www\skillnib\index.php on line 26
+[07-Jul-2019 01:15:15 UTC] PHP Stack trace:
+[07-Jul-2019 01:15:15 UTC] PHP   1. {main}() D:\Server\Wamp\www\skillnib\index.php:0
+[07-Jul-2019 01:15:16 UTC] PHP Notice:  Undefined variable: view in D:\Server\Wamp\www\skillnib\index.php on line 26
+[07-Jul-2019 01:15:16 UTC] PHP Stack trace:
+[07-Jul-2019 01:15:16 UTC] PHP   1. {main}() D:\Server\Wamp\www\skillnib\index.php:0
+[07-Jul-2019 01:15:16 UTC] PHP Warning:  include(): Filename cannot be empty in D:\Server\Wamp\www\skillnib\index.php on line 26
+[07-Jul-2019 01:15:16 UTC] PHP Stack trace:
+[07-Jul-2019 01:15:16 UTC] PHP   1. {main}() D:\Server\Wamp\www\skillnib\index.php:0
+[07-Jul-2019 01:15:16 UTC] PHP Warning:  include(): Failed opening '' for inclusion (include_path='.;C:\php\pear') in D:\Server\Wamp\www\skillnib\index.php on line 26
+[07-Jul-2019 01:15:16 UTC] PHP Stack trace:
+[07-Jul-2019 01:15:16 UTC] PHP   1. {main}() D:\Server\Wamp\www\skillnib\index.php:0

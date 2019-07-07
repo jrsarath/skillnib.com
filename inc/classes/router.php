@@ -42,12 +42,16 @@
             }
           }
       });
-
+          // ACCOUNT SUB ROUTES
+          $router->get('/account/edit', function() {
+              global $view;
+              $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/edit.php";
+          });
+          $router->post('/account/edit', function() {
+              global $view;
+              $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/edit.php";
+          });
       // Authentications
-      $router->get('/login', function() {
-          global $view;
-          $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/login.php";
-      });
       $router->get('/signup', function() {
           global $view;
           $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/signup.php";
@@ -60,6 +64,10 @@
             $auth->signup();
           }
           $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/signup.php";
+      });
+      $router->get('/login', function() {
+          global $view;
+          $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/login.php";
       });
       $router->post('/login', function() {
           global $view;
