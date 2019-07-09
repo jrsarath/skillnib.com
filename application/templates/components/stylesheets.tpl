@@ -8,4 +8,4 @@
 <link rel="stylesheet" href="/assets/css/sweetalert2.min.css" />
 <link rel="stylesheet" href="/assets/css/ionicons.css">
 <link rel="stylesheet" href="/assets/css/droopmenu.css">
-<link rel="stylesheet" href="/assets/css/application.css" />
+<link rel="stylesheet" href="/assets/css/application.css?v={time()}" />

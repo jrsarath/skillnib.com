@@ -7,12 +7,13 @@
   class App {
     public $db;
     public $debug;
+    public $date;
     function __construct() {
       $DBHelper = new DBHelper();
       $this->db = $DBHelper->connect();
       $this->debug = $DBHelper->debug();
+      $this->date = date('Y');
     }
-
     // INSTITUTE DETAILS
     function int_details($i, $d) {
       if ($result = mysqli_query($this->db, "SELECT $d FROM institutes WHERE slug='$i'")) {

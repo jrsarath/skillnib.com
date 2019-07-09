@@ -1,6 +1,5 @@
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"].'/application/vendor/directory.php');
-class Smarty extends Smarty {
+class newSmarty extends Smarty {
   function __construct()
   {
       parent::__construct();
@@ -10,3 +9,4 @@ class Smarty extends Smarty {
       $this->caching = 0;
   }
 }
+$smarty = new newSmarty;

@@ -78,7 +78,9 @@
       });
       $router->get('/login', function() {
           global $view;
+          global $smarty;
           $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/login.php";
+          $smarty->display('pages/login.tpl');
       });
       $router->post('/login', function() {
           global $view;

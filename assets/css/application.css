@@ -1,0 +1,13 @@
+footer ul li {
+  display: inline-block;
+}
+footer ul.links li a:hover {
+    -webkit-transform: translate(1px, 0);
+    -moz-transform: translate(1px, 0);
+    -ms-transform: translate(1px, 0);
+    -o-transform: translate(1px, 0);
+    transform: translate(1px, 0);
+}
+footer ul.links li a:after {
+  display: none !important;
+}

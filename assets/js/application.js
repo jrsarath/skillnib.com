@@ -1,0 +1,1 @@
+$('.droopmenu-navbar').droopmenu();
