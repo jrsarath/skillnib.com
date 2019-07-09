@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>SkillNib - Login</title>
+    <title>SkillNib - Register</title>
     {include file='components/head.tpl'}
     <meta name="description" content="SPARKER - Premium directory and listings template by Ansonika.">
   </head>
@@ -8,7 +8,7 @@
     {include file='components/header.tpl' mega='false'}
     <div class="sub_header_in">
   	<div class="container">
-  			<h1>Login to your Account</h1>
+  			<h1>Register your Account</h1>
   		</div>
   		<!-- /container -->
   	</div>
@@ -26,6 +26,14 @@
       					<label>Password</label>
       					<input type="password" class="form-control" name="password" id="password" value="">
       					<i class="icon_lock_alt"></i>
+      				</div>
+              <div class="form-group">
+      					<label>Account type</label>
+      					<select type="text" class="form-control" name="role" id="role">
+                  <option value="student">Student</option>
+                  <option value="business">Educational Institute</option>
+                </select>
+      					<i class="ti-user"></i>
       				</div>
       				<div class="clearfix add_bottom_30">
       					<div class="checkboxes float-left">

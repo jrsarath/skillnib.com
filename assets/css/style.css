@@ -4,7 +4,7 @@ Theme URI: http://www.ansonika.com/sparker/
 Author: Ansonika
 Author URI: http://themeforest.net/user/Ansonika/
 
-[Table of contents] 
+[Table of contents]
 
 1. SITE STRUCTURE and TYPOGRAPHY
 - 1.1 Typography
@@ -24,7 +24,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 - 2.10 404 page
 - 2.11 Media Gallery
 - 2.12 Faq
-- 2.13 Bookings 
+- 2.13 Bookings
 
 3. COMMON
 - 3.1 Misc
@@ -632,7 +632,7 @@ a.btn_add,
   position: relative;
   top: 2px;
 }
-@media (max-width: 991px) {
+@media (max-width: 767px) {
   a.btn_add,
   .btn_add {
     display: none;
@@ -915,7 +915,7 @@ ul#top_menu li a:hover {
   color: #fff;
   opacity: 0.7;
 }
-ul#top_menu li a.login, ul#top_menu li a.wishlist_bt_top {
+ul#top_menu li a.login, ul#top_menu li a.wishlist_bt_top, ul#top_menu li a.account {
   display: block;
   width: 22px;
   height: 23px;
@@ -928,7 +928,7 @@ ul#top_menu li a.login, ul#top_menu li a.wishlist_bt_top {
   transition: opacity 0.5s ease;
 }
 @media (max-width: 991px) {
-  ul#top_menu li a.login, ul#top_menu li a.wishlist_bt_top {
+  ul#top_menu li a.login, ul#top_menu li a.wishlist_bt_top, ul#top_menu li a.account {
     top: 2px;
   }
 }
@@ -975,7 +975,6 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before, header.s
     top: 0;
     left: 0;
     width: 100%;
-    text-align: center;
   }
   #logo img {
     width: auto;
@@ -4887,18 +4886,18 @@ ul.menu_list li .thumb img {
   }
 }
 #login aside, #register aside {
-  width: 430px;
+
   -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
-  padding: 45px 60px 60px 60px;
-  margin-left: -215px;
-  position: absolute;
+  padding: 60px 60px 60px 60px;
+  width: 430px;
+  position: relative;
+  /*margin-left: -215px;
   left: 50%;
-  top: 0;
+  top: 0;*/
   overflow-y: auto;
   background-color: #fff;
-  min-height: 100vh;
 }
 @media (max-width: 767px) {
   #login aside, #register aside {
@@ -4912,7 +4911,7 @@ ul.menu_list li .thumb img {
   margin-bottom: 60px;
   display: block;
 }
-#login aside form .form-group input, #register aside form .form-group input {
+#login aside form .form-group input, #register aside form .form-group input,#login aside form .form-group select, #register aside form .form-group select {
   padding-left: 40px;
 }
 #login aside form .form-group i, #register aside form .form-group i {
@@ -4939,7 +4938,7 @@ ul.menu_list li .thumb img {
 }
 
 .access_social {
-  margin-top: 45px;
+  margin-top: 30px;
 }
 @media (max-width: 767px) {
   .access_social {

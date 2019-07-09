@@ -1,3 +1,4 @@
+/* ## OVERRIDES ## */
 footer ul li {
   display: inline-block;
 }
@@ -10,4 +11,41 @@ footer ul.links li a:hover {
 }
 footer ul.links li a:after {
   display: none !important;
+}
+.top-menu {
+  background: #fff;
+  padding: 10px 0;
+  height: 57px;
+}
+a.btn_add, .btn_add {
+  background-color: #004dda !important;
+}
+ul#top_menu li a.account {
+  width: 25px;
+  margin-top: 3px;
+}
+ul#top_menu li a.account:before {
+  content: "\e602";
+  font-family: 'themify';
+  font-size: 21px;
+  font-size: 1.3125rem;
+  text-indent: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: normal;
+  line-height: 1;
+}
+@media (max-width: 576px) {
+  #login, #signup {
+    padding: 0px;
+  }
+  #login aside, #signup aside {
+    box-shadow: none;
+  }
+}
+@media (max-width: 767px) {
+  #logo {
+    text-align: center;
+  }
 }

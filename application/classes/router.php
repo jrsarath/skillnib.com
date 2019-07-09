@@ -1,11 +1,9 @@
 <?php
-  ob_start();
   $app = new App();
   $router = new Buki\Router();
   // HOME
   $router->get('/', function() {
-      global $view;
-      $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/home.php";
+      $GLOBALS['smarty']->display('pages/home.tpl');
   });
 
   // ACCOUNT
@@ -61,8 +59,7 @@
 
   // Authentications
   $router->get('/signup', function() {
-      global $view;
-      $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/signup.php";
+      $GLOBALS['smarty']->display('pages/signup.tpl');
   });
   $router->post('/signup', function() {
       global $view;
@@ -74,8 +71,6 @@
       $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/signup.php";
   });
   $router->get('/login', function() {
-      global $view;
-      $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/login.php";
       $GLOBALS['smarty']->display('pages/login.tpl');
   });
   $router->post('/login', function() {

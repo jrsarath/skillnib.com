@@ -6,7 +6,7 @@ if ($_GET["get"]== "y") {
   echo '</pre>';
 }
 if ($_GET["set"]== "y") {
-  $_SESSION['authentication_status'] == 'true';
+  $_SESSION["user_id"] = '2';
   echo '<pre>';
   var_dump($_SESSION);
   echo '</pre>';
