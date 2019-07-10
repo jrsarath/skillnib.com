@@ -3,3 +3,4 @@
 /global/composer.phar
 /global/vendor/
 /application/templates_cache/
+error_log
