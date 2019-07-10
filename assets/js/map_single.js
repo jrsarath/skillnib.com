@@ -1,3 +1,4 @@
+function set_map(arg){
 	(function(A) {
 
 	if (!Array.prototype.forEach)
@@ -12,22 +13,7 @@
 		var
 		mapObject,
 		markers = [],
-		markersData = {
-			'Marker': [
-			{
-				type_point: 'Paris Centre',
-				name: 'Mariott Hotel',
-				location_latitude: 48.865633, 
-				location_longitude: 2.321236,
-				map_image_url: 'img/thumb_map_single_hotel.jpg',
-				rate: 'Superb | 7.5',
-				name_point: 'Mariott Hotel',
-				get_directions_start_address: '',
-				phone: '+3934245255'
-			}
-			]
-
-		};
+		markersData = arg;
 
 			var mapOptions = {
 				zoom: 14,
@@ -312,28 +298,27 @@
 					}
 				]
 			};
-			var
-			marker;
+			var marker;
 			mapObject = new google.maps.Map(document.getElementById('map'), mapOptions);
 			for (var key in markersData)
 				markersData[key].forEach(function (item) {
 					marker = new google.maps.Marker({
 						position: new google.maps.LatLng(item.location_latitude, item.location_longitude),
 						map: mapObject,
-						icon: 'img/pins/' + key + '.png',
+						icon: '/assets/images/icons/' + key + '.png',
 					});
 
 					if ('undefined' === typeof markers[key])
 						markers[key] = [];
 					markers[key].push(marker);
 					google.maps.event.addListener(marker, 'click', (function () {
-				  closeInfoBox();
-				  getInfoBox(item).open(mapObject, this);
-				  mapObject.setCenter(new google.maps.LatLng(item.location_latitude, item.location_longitude));
+					closeInfoBox();
+					getInfoBox(item).open(mapObject, this);
+					mapObject.setCenter(new google.maps.LatLng(item.location_latitude, item.location_longitude));
 				 }));
 
 	});
-	
+
 		function hideAllMarkers () {
 			for (var key in markers)
 				markers[key].forEach(function (marker) {
@@ -350,20 +335,21 @@
 				content:
 				'<div class="marker_info" id="marker_info">' +
 				'<img src="' + item.map_image_url + '" alt=""/>' +
-				'<span>'+ 
+				'<span>'+
 					'<span class="infobox_rate">'+ item.rate +'</span>' +
 					'<em>'+ item.type_point +'</em>' +
 					'<h3>'+ item.name_point +'</h3>' +
-				'<strong>'+ item.description_point +'</strong>' +
-				'<form action="http://maps.google.com/maps" method="get" target="_blank"><input name="saddr" value="'+ item.get_directions_start_address +'" type="hidden"><input type="hidden" name="daddr" value="'+ item.location_latitude +',' +item.location_longitude +'"><button type="submit" value="Get directions" class="btn_infobox_get_directions">Get directions</button></form>' +
+					'<strong>'+ item.description_point +'</strong>' +
+				//'<form action="http://maps.google.com/maps" method="get" target="_blank"><input name="saddr" value="'+ item.get_directions_start_address +'" type="hidden"><input type="hidden" name="daddr" value="'+ item.location_latitude +',' +item.location_longitude +'"><button type="submit" value="Get directions" class="btn_infobox_get_directions">Get directions</button></form>' +
 					'<a href="tel://'+ item.phone +'" class="btn_infobox_phone">'+ item.phone +'</a>' +
+					'<a href="'+ item.website +'" class=""><strong><i class="ti-world mr-2"></i>'+ item.website +'</strong></a>' +
 					'</span>' +
 				'</div>',
 				disableAutoPan: false,
 				maxWidth: 0,
 				pixelOffset: new google.maps.Size(10, 92),
 				closeBoxMargin: '',
-				closeBoxURL: "img/close_infobox.png",
+				closeBoxURL: "/assets/images/icons/close_infobox.png",
 				isHidden: false,
 				alignBottom: true,
 				pane: 'floatPane',
@@ -372,3 +358,4 @@
 
 
 		};
+}

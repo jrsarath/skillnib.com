@@ -7,12 +7,12 @@
   class App {
     public $db;
     public $debug;
-    public $date;
+    public $version = '1.0';
+
     function __construct() {
       $DBHelper = new DBHelper();
       $this->db = $DBHelper->connect();
       $this->debug = $DBHelper->debug();
-      $this->date = date('Y');
     }
     // INSTITUTE DETAILS
     function int_details($i, $d) {
@@ -20,14 +20,14 @@
         $row = mysqli_fetch_assoc($result);
         if ($d == 'images') {
           $img = explode(',', $row[$d]);
+          $index = 0;
           foreach($img as &$key) {
-            echo '
-            <div class="portfolio-item">
-              <a href="'.$key.'" data-lightbox="portfolio-image">
-                <img src="'.$key.'" class="img-fluid" alt="">
-              </a>
-            </div>
-            ';
+            if ($index == 0) {
+              echo '<a href="'.$key.'" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>';
+            } else {
+              echo '<a href="'.$key.'" title="Photo title" data-effect="mfp-zoom-in"></a>';
+            }
+            $index++;
           }
         } elseif ($d == 'categories' || $d == 'tags') {
           $item = explode(',', $row[$d]);
@@ -57,14 +57,14 @@
         $row = mysqli_fetch_assoc($result);
         if ($d == 'images') {
           $img = explode(',', $row[$d]);
+          $index = 0;
           foreach($img as &$key) {
-            echo '
-            <div class="portfolio-item">
-              <a href="'.$key.'" data-lightbox="portfolio-image">
-                <img src="'.$key.'" class="img-fluid" alt="">
-              </a>
-            </div>
-            ';
+            if ($index == 0) {
+              echo '<a href="'.$key.'" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>';
+            } else {
+              echo '<a href="'.$key.'" title="Photo title" data-effect="mfp-zoom-in"></a>';
+            }
+            $index++;
           }
         } elseif ($d == 'exams' || $d == 'tags' || $d == 'degree') {
           $item = explode(',', $row[$d]);
@@ -99,14 +99,14 @@
         $row = mysqli_fetch_assoc($result);
         if ($d == 'images') {
           $img = explode(',', $row[$d]);
+          $index = 0;
           foreach($img as &$key) {
-            echo '
-            <div class="portfolio-item">
-              <a href="'.$key.'" data-lightbox="portfolio-image">
-                <img src="'.$key.'" class="img-fluid" alt="">
-              </a>
-            </div>
-            ';
+            if ($index == 0) {
+              echo '<a href="'.$key.'" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>';
+            } else {
+              echo '<a href="'.$key.'" title="Photo title" data-effect="mfp-zoom-in"></a>';
+            }
+            $index++;
           }
         } elseif ($d == 'exams' || $d == 'tags' || $d == 'degree') {
           $item = explode(',', $row[$d]);
@@ -224,39 +224,36 @@
           while ($row = mysqli_fetch_assoc($result)) {
             $stars = '';
             for ($x = 1; $x <= $row['star']/2; $x++) {
-                $stars .= '<i class="fas fa-star gold"></i>';
+                $stars .= '<i class="icon_star voted"></i>';
+            }
+            if ($row["reviewer_type"] == 'student' ) {
+              $img = $this->student_details($row['reviewer_id'], 'image');
+            } else {
+              $img = $this->business_details($row['reviewer_id'], 'image');
             }
             echo '
-              <div class="review-content container-fluid">
-                <div class="row row-eq-height">
-                  <div class="col-2">
-                    <img src="/assets/images/defaultpic.jpg" class="img-responsive w-100 p-4" style="border-radius: 50%;" />
+              <div class="review-box clearfix">
+                <figure class="rev-thumb"><img src="'.$img.'" alt="Avatar">
+                </figure>
+                <div class="rev-content">
+                  <div class="rating">
+                    '.$stars.'
                   </div>
-                  <div class="col-10 p-4">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <span>'.$row["name"].'</span>
-                      </div>
-                      <div class="col-md-6">
-                        <span class="d-block text-right">
-                          '.$stars.'
-                        </span>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <p>'.$row["comment"].'</p>
-                      </div>
-                    </div>
+                  <div class="rev-info">
+                    '.$row["name"].' – '.$row["date"].'
+                  </div>
+                  <div class="rev-text">
+                    <p>
+                      '.$row["comment"].'
+                    </p>
                   </div>
                 </div>
               </div>
-              <hr>
             ';
           }
         } else {
           echo '<div class="review-content container-fluid py-5 text-center">
-                  <h6 class="text-secondary">No reviews/ratings yet</h6>
+                  <h6 class="text-secondary">No Reviews Yet</h6>
                 </div>';
         }
       } else {
@@ -279,11 +276,11 @@
         if (!empty($row['star'])) {
           $s = '';
           for ($x = 1; $x <= $row['star']/2; $x++) {
-              $s .= '<i class="fas fa-star gold"></i>';
+              $s .= '<i class="icon_star"></i>';
           }
           return $s;
         } else {
-          return '<i class="far fa-star" style="font-size:25px;"></i>';
+          return '<i class="icon_star"></i>';
         }
 
       } else {
@@ -307,6 +304,37 @@
         $this->debug_error();
       }
     }
+    function review_grade($d){
+      if ($d <= 1.5) {
+        return 'Poor';
+      }
+      if ($d > 1.5 && $d < 2.5) {
+        return 'Okay';
+      }
+      if ($d > 2.5 && $d < 4) {
+        return 'Good';
+      }
+      if ($d >= 4) {
+        return 'Excellent';
+      }
+    }
+    function total_review_count($i, $t) {
+      if ($t == 'institute') {
+        $id = $this->int_details($i, 'id');
+      } else if ($t == 'college') {
+        $id = $this->clg_details($i, 'id');
+      } else if ($t == 'job_consultancy') {
+        $id = $this->job_details($i, 'id');
+      } else if ($t == 'tuition') {
+        $id = $this->tuition_details($i, 'id');
+      }
+      if ($result = mysqli_query($this->db, "SELECT AVG(star) as star FROM reviews WHERE review_for='$id' AND review_type='$t'")) {
+        //$row = mysqli_fetch_assoc($result);
+        return mysqli_num_rows($result);
+      } else {
+        $this->debug_error();
+      }
+    }
     function addReview($i, $t) {
       if ($t == 'institute') {
         $id = $this->int_details($i, 'id');
@@ -320,17 +348,18 @@
       $user = $_SESSION['user_id'];
       if ($this->user_details($user, 'role') == 'student') {
         $name = $this->student_details($user, 'name');
+        $reviewer_type = 'student';
       } else {
         $name = $this->business_details($user, 'name');
+        $reviewer_id = 'business';
       }
-      error_log($id);
       $rating = $this->safeValuePost('rating');
       $review = $this->safeValuePost('review');
       $date = date('d M Y');
       $query = mysqli_query($this->db, "SELECT * FROM reviews WHERE parent_id='$user' AND review_for='$id' AND review_type='$t'");
       //error_log(mysqli_num_rows($query));
       if (mysqli_num_rows($query) <= 0 ){
-        if (mysqli_query($this->db, "INSERT INTO reviews(review_type, review_for, parent_id, name, star, comment, date) VALUES('$t','$id','$user', '$name','$rating','$review', '$date')")) {
+        if (mysqli_query($this->db, "INSERT INTO reviews(review_type, review_for, parent_id, name, reviewer_id, reviewer_type star, comment, date) VALUES('$t','$id','$user', '$name', '$user', '$reviewer_type', '$rating','$review', '$date')")) {
           global $status;
           $status = 'success';
         } else {

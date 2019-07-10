@@ -16,7 +16,7 @@
     <div class="container">
       <div id="login" class="row justify-content-center margin_60">
     		<aside>
-    			  <form>
+    			  <form method="post">
       				<div class="form-group">
       					<label>Email</label>
       					<input type="email" class="form-control" name="email" id="email">
@@ -36,14 +36,14 @@
       					</div>
       					<div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
       				</div>
-      				<a href="#0" class="btn_1 rounded full-width">Login Now</a>
+      				<button class="btn_1 rounded full-width" type="submit" name="login">Login Now</button>
               <div class="divider"><span>Or</span></div>
               <div class="access_social">
       					<a href="#0" class="social_bt facebook">Login with Facebook</a>
       					<a href="#0" class="social_bt google">Login with Google</a>
       				</div>
 
-      				<div class="text-center add_top_10">New to Sparker? <strong><a href="/register">Sign up!</a></strong></div>
+      				<div class="text-center add_top_10">New to SkillNib? <strong><a href="/signup">Sign up!</a></strong></div>
       			</form>
     			<div class="copy">© 2018 Sparker</div>
     		</aside>

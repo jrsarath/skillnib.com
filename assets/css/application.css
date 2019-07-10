@@ -18,7 +18,7 @@ footer ul.links li a:after {
   height: 57px;
 }
 a.btn_add, .btn_add {
-  background-color: #004dda !important;
+  background-color: #004dda;
 }
 ul#top_menu li a.account {
   width: 25px;
@@ -35,6 +35,17 @@ ul#top_menu li a.account:before {
   top: 0;
   font-weight: normal;
   line-height: 1;
+}
+.cat_star {
+  margin-bottom: 10px;
+}
+.cat_star i {
+    margin-right: 2px;
+    color: #FFC107;
+    font-size: 22px;
+}
+.Poor {
+  background-color: #ef5350 !important;
 }
 @media (max-width: 576px) {
   #login, #signup {

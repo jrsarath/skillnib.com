@@ -1,6 +1,7 @@
 <?php
   $app = new App();
   $router = new Buki\Router();
+  $smarty->assign('app', $app);
   // HOME
   $router->get('/', function() {
       $GLOBALS['smarty']->display('pages/home.tpl');
@@ -68,7 +69,7 @@
         $auth = new Authentication();
         $auth->signup();
       }
-      $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/signup.php";
+      $GLOBALS['smarty']->display('pages/signup.tpl');
   });
   $router->get('/login', function() {
       $GLOBALS['smarty']->display('pages/login.tpl');
@@ -80,20 +81,17 @@
         $auth = new Authentication();
         $auth->login();
       }
-      $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/login.php";
+      $GLOBALS['smarty']->display('pages/login.tpl');
   });
   // End Authentications
 
   // Institutes
   $router->get('/institutes', function($value) {
-      global $view;
-      $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/institutes.php";
+      $GLOBALS['smarty']->display('pages/institutes.tpl');
   });
   $router->get('/institute/{*}', function($value) {
-      global $view;
-      global $i;  // institute name
-      $i = $value;
-      $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/institute.php";
+      $GLOBALS['smarty']->assign('i', $value);
+      $GLOBALS['smarty']->display('pages/institute.tpl');
   });
   $router->post('/institute/{*}', function($value) {
       global $view;
@@ -208,12 +206,12 @@
   // End Search
 
   // 404
-  $router->error(function(){
+  /*$router->error(function(){
     header('Location: /404');
   });
   $router->add('GET|POST', '/404', function(){
     global $view;
     $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/404.php";
-  });
+  });*/
 
   $router->run();
