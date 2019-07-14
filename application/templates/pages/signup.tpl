@@ -30,7 +30,7 @@
               <div class="form-group with-icon">
       					<label>Account type</label>
                 <div class="custom-select-form">
-                  <select type="text" class="form-control" name="role" id="role">
+                  <select type="text" class="form-control nice" name="role" id="role">
                     <option value="student">Student</option>
                     <option value="business">Educational Institute</option>
                   </select>

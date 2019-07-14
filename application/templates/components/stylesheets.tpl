@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="/assets/css/vendors.css" />
 <link rel="stylesheet" href="/assets/css/review/bars-square.css" />
 <link rel="stylesheet" href="/assets/css/sweetalert2.min.css" />
-<link rel="stylesheet" href="/assets/css/ionicons.css">
-<link rel="stylesheet" href="/assets/css/droopmenu.css">
+<link rel="stylesheet" href="/assets/css/ionicons.css" />
+<link rel="stylesheet" href="/assets/css/droopmenu.css" />
+<link rel="stylesheet" href="/assets/css/blog.css" />
 <link rel="stylesheet" href="/assets/css/application.css?v={time()}" />

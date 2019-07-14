@@ -102,14 +102,14 @@
 					</div>
 				</div>
         <div class="col-lg-3 col-md-6 col-sm-6">
-					<a data-toggle="collapse" data-target="#collapse_ft_2" aria-expanded="false" aria-controls="collapse_ft_2" class="collapse_bt_mobile">
+					<a data-toggle="collapse" data-target="#collapse_ft_3" aria-expanded="false" aria-controls="collapse_ft_2" class="collapse_bt_mobile">
 						<h3>Top Competitive Exam Institutes</h3>
 						<div class="circle-plus closed">
 							<div class="horizontal"></div>
 							<div class="vertical"></div>
 						</div>
 					</a>
-					<div class="collapse show" id="collapse_ft_2">
+					<div class="collapse show" id="collapse_ft_3">
 						<ul class="links">
               <li><a href="#">Mumbai</a> / </li>
               <li><a href="#">Delhi</a> / </li>
@@ -152,14 +152,14 @@
 					</div>
 				</div>
         <div class="col-lg-3 col-md-6 col-sm-6">
-					<a data-toggle="collapse" data-target="#collapse_ft_2" aria-expanded="false" aria-controls="collapse_ft_2" class="collapse_bt_mobile">
+					<a data-toggle="collapse" data-target="#collapse_ft_4" aria-expanded="false" aria-controls="collapse_ft_2" class="collapse_bt_mobile">
 						<h3>Top Entrance Exam Institutes</h3>
 						<div class="circle-plus closed">
 							<div class="horizontal"></div>
 							<div class="vertical"></div>
 						</div>
 					</a>
-					<div class="collapse show" id="collapse_ft_2">
+					<div class="collapse show" id="collapse_ft_4">
 						<ul class="links">
               <li><a href="#">Mumbai</a> / </li>
               <li><a href="#">Delhi</a> / </li>

@@ -359,20 +359,16 @@
       $query = mysqli_query($this->db, "SELECT * FROM reviews WHERE parent_id='$user' AND review_for='$id' AND review_type='$t'");
       //error_log(mysqli_num_rows($query));
       if (mysqli_num_rows($query) <= 0 ){
-        if (mysqli_query($this->db, "INSERT INTO reviews(review_type, review_for, parent_id, name, reviewer_id, reviewer_type star, comment, date) VALUES('$t','$id','$user', '$name', '$user', '$reviewer_type', '$rating','$review', '$date')")) {
-          global $status;
-          $status = 'success';
+        if (mysqli_query($this->db, "INSERT INTO reviews(review_type, review_for, parent_id, name, reviewer_id, reviewer_type, star, comment, date) VALUES('$t','$id','$user', '$name', '$user', '$reviewer_type', '$rating','$review', '$date')")) {
+          return 'success';
         } else {
-          global $status;
-          $status = 'error';
+          return 'error';
           $this->debug_error();
         }
       } elseif (mysqli_num_rows($query) > 0){
-        global $status;
-        $status = 'duplicate';
+        return 'duplicate';
       } else {
-        global $status;
-        $status = 'error';
+        return 'error';
         $this->debug_error();
       }
     }
@@ -414,22 +410,25 @@
       if ($result = mysqli_query($this->db, "SELECT * FROM posts WHERE parent_id='$id' ORDER BY id DESC")) {
         if (mysqli_num_rows($result) > 0) {
           while ($row = mysqli_fetch_assoc($result)) {
-            echo '
-              <div class="single-post">
-                <div class="post-heading">
-                  <h4>'.$row["title"].'</h4>
-                  <p>'.explode('-', $row["date"])[0].'</p>
-                </div>
-                <div class="post-contents">
-                  '.$row["content"].'
-                </div>
-              </div>
+            echo '            
+              <article class="blog">
+								<div class="post_info">
+									<small>'.explode('-', $row["date"])[0].'</small>
+									<h2>'.$row["title"].'</h2>
+									<p>'.$row["content"].'</p>
+								</div>
+							</article>
             ';
           }
         } else {
-          echo '<div class="review-content container-fluid py-5 text-center">
-                  <h6 class="text-secondary">No posts/updates yet</h6>
-                </div>';
+          echo '
+          <article class="blog">
+            <div class="post_info">
+              <small>&nbsp;</small>
+              <h2>No Post/Announcement Yet</h2>
+            </div>
+          </article>
+          ';
         }
       } else {
         $this->debug_error();

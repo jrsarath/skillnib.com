@@ -1670,7 +1670,7 @@ ul#additional_links li:after {
 @media (max-width: 575px) {
   #custom-search-input input[type='submit'] {
     text-indent: -999px;
-    background: #004dda url(../img/search.svg) no-repeat center center;
+    background: #004dda url(/assets/images/icons/search.svg) no-repeat center center;
   }
 }
 
@@ -1872,7 +1872,7 @@ ul#additional_links li:after {
   -ms-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
   text-indent: -999px;
-  background: #FFC107 url(../img/search.svg) no-repeat center center;
+  background: #FFC107 url(/assets/images/icons/search.svg) no-repeat center center;
 }
 .custom-search-input-2.inner input[type='submit']:hover {
   background-color: #32a067;
@@ -1880,7 +1880,7 @@ ul#additional_links li:after {
 @media (max-width: 575px) {
   .custom-search-input-2.inner input[type='submit'] {
     text-indent: -999px;
-    background: #004dda url(../img/search.svg) no-repeat center center;
+    background: #004dda url(/assets/images/icons/search.svg) no-repeat center center;
   }
 }
 @media (max-width: 991px) {
@@ -3767,7 +3767,7 @@ a.boxed_list:hover i {
 }
 
 a.btn_search_mobile {
-  background: url(../img/search.svg) no-repeat center center;
+  background: url(/assets/images/icons/search.svg) no-repeat center center;
   width: 21px;
   height: 21px;
   float: right;
@@ -3966,7 +3966,7 @@ a.btn_search_mobile.map_view {
   }
 }
 .hero_in.hotels_detail:before {
-  background: url(../img/hero_in_hotels_detail.jpg) center center no-repeat;
+  background: url(/assets/images/defaults/default-cover.jpg) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -4011,8 +4011,8 @@ a.btn_search_mobile.map_view {
 }
 .hero_in a.btn_photos {
   position: absolute;
-  left: 20px;
-  bottom: 20px;
+  /*left: 20px;
+  bottom: 20px;*/
   background-color: #fff;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;

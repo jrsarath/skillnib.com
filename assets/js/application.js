@@ -5,7 +5,17 @@
   $('.droopmenu-navbar').droopmenu({
     dmOffCanvasPos: 'dmoffleft'
   });
-  $('select').niceSelect();
+  $('select.nice').niceSelect();
+
+	$('#write-review-rating').barrating({
+        theme: 'bars-square',
+        hoverState: true,
+        showSelectedRating: true,
+        reverse: false,
+        showValues: true,
+      });
+
+	/* PREBAKED FUNCTIONS */
 	// Sticky nav
 	$(window).on('scroll', function () {
 		if ($(this).scrollTop() > 1) {
@@ -289,10 +299,22 @@
 		}
 	});
 
-	// Sticky horizontal results list page or detail page
-	$("#results,.sticky_horizontal_2").stick_in_parent({
-		offset_top: 0
+	$(window).on('load resize', function () {
+		var width = $(window).width();
+		if (width <= 767) {
+			$(".header_in").addClass('is_sticky');
+			$("#results,.sticky_horizontal_2").stick_in_parent({
+				offset_top: 57
+			});
+		} else {
+			$(".header_in").removeClass('is_sticky');
+			$("#results,.sticky_horizontal_2").stick_in_parent({
+				offset_top: 0
+			});
+		}
 	});
+	// Sticky horizontal results list page or detail page
+
 
 	// Sticky results map view
 	$(window).on('load resize', function () {
@@ -310,7 +332,7 @@
 
 	// Secondary nav scroll
 	var $sticky_nav= $('.secondary_nav');
-	$sticky_nav.find('a').on('click', function(e) {
+	$('#info-scroller').on('click', function(e) {
 		e.preventDefault();
 		var target = this.hash;
 		var $target = $(target);
@@ -318,10 +340,12 @@
 			'scrollTop': $target.offset().top - 85
 		}, 800, 'swing');
 	});
+	/*
 	$sticky_nav.find('ul li a').on('click', function () {
 		$sticky_nav.find('ul li a.active').removeClass('active');
 		$(this).addClass('active');
 	});
+	*/
 
 	// Faq section
 	$('#faq_cat').theiaStickySidebar({

@@ -21,7 +21,27 @@
         <div class="hero_in hotels_detail">
           <div class="wrapper">
             <span class="magnific-gallery">
-              {$app->int_details($i, 'images')}
+              <div class="container">
+                <div class="row h-100 align-items-center">
+                  <div class="col-md-4 h-sm-50 text-center">
+                    <img src="{$app->int_details($i, 'profile_image')}" class="rounded org-profile-img py-3 h-100" alt="Logo">
+                  </div>
+                  <div class="col-md-8 h-sm-50 text-center text-md-left">
+                    <div class="detail_title_1">
+                      <div class="cat_star">
+                        {$app->get_total_rating($i, 'institute')}
+                      </div>
+                      <h1 class="my-2">{$app->int_details($i, 'name')}</h1>
+                      <a class="address" href="#">
+                        {$add = explode(',',$app->int_details($i, 'address'))}
+                        {$add[0]}, {$add[1]}, {$add[2]}, {$app->int_details($i, 'city')}
+                      </a>
+                    </div>
+                    {$app->int_details($i, 'images')}
+                  </div>
+                </div>
+
+              </div>
             </span>
           </div>
         </div>
@@ -29,10 +49,11 @@
 
         <nav class="secondary_nav sticky_horizontal_2">
           <div class="container">
-            <ul class="clearfix">
-              <li><a href="#description" class="active">Description</a></li>
-              <li><a href="#reviews">Reviews</a></li>
-              <li><a href="#sidebar">Booking</a></li>
+            <ul class="nav clearfix" id="listing-tab-nav" role="tablist">
+              <li><a href='#main' class="active" data-toggle="tab">Details</a></li>
+              <li class="d-none d-md-block"><a href='#timeline' data-toggle="tab">Timeline</a></li>
+              <li><a href='#review' data-toggle="tab">Reviews</a></li>
+              <li><a href="#sidebar" id="info-scroller">Info</a></li>
             </ul>
           </div>
         </nav>
@@ -40,214 +61,180 @@
         <div class="container margin_60_35">
             <div class="row">
               <div class="col-lg-8">
-                <section id="description">
-                  <div class="detail_title_1">
-                    <div class="cat_star">
-                      {$app->get_total_rating($i, 'institute')}
-                    </div>
-                    <h1>{$app->int_details($i, 'name')}</h1>
-                    <a class="address" href="#">
-                      {$add = explode(',',$app->int_details($i, 'address'))}
-                      {$add[0]}, {$add[1]}, {$add[2]}, {$app->int_details($i, 'city')}
-                    </a>
-                  </div>
-                  <p>{$app->int_details($i, 'description')}</p>
-                  <h5>Services Offered</h5>
-                  <p>{$app->int_details($i, 'services')}</p>
-                  <h5 class="add_bottom_15">Amenities</h5>
-                  <div class="row add_bottom_30">
-                    <div class="col-lg-6">
-                      <ul class="bullets">
-                        <li>Dolorem mediocritatem</li>
-                        <li>Mea appareat</li>
-                        <li>Prima causae</li>
-                        <li>Singulis indoctum</li>
-                      </ul>
-                    </div>
-                    <div class="col-lg-6">
-                      <ul class="bullets">
-                        <li>Timeam inimicus</li>
-                        <li>Oportere democritum</li>
-                        <li>Cetero inermis</li>
-                        <li>Pertinacia eum</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- /row -->
-                  <hr>
-                  <h3>Prices</h3>
-                  <table class="table table-striped add_bottom_45">
-                    <tbody>
-                      <tr>
-                        <td>Low (from 23/03 to 31/05)</td>
-                        <td>140$</td>
-                      </tr>
-                      <tr>
-                        <td>Middle (from 23/03 to 31/05)</td>
-                        <td>180$</td>
-                      </tr>
-                      <tr>
-                        <td>High (from 23/03 to 31/05)</td>
-                        <td>200$</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <hr>
-                  <h3>Location</h3>
-                  <div id="map" class="map map_single add_bottom_45"></div>
-                  <!-- End Map -->
-                </section>
-                <!-- /section -->
-
-                <section id="reviews">
-                  <div class="add-review">
-                      <h5>Leave a Review</h5>
-                      <form>
-                        <div class="row">
-                          <div class="form-group col-md-6">
-                            <label>Name and Lastname *</label>
-                            <input type="text" name="name_review" id="name_review" placeholder="" class="form-control">
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label>Email *</label>
-                            <input type="email" name="email_review" id="email_review" class="form-control">
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label>Rating </label>
-                            <div class="custom-select-form">
-                              <select name="rating_review" id="rating_review" class="wide">
-                                <option value="1">1 (lowest)</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5" selected>5 (medium)</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10 (highest)</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group col-md-12">
-                            <label>Your Review</label>
-                            <textarea name="review_text" id="review_text" class="form-control" style="height:130px;"></textarea>
-                          </div>
-                          <div class="form-group col-md-12 add_top_20 add_bottom_30">
-                            <input type="submit" value="Submit" class="btn_1" id="submit-review">
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  <hr>
-                  <h2>Reviews</h2>
-                  <div class="reviews-container add_bottom_30">
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <div id="review_summary" class="{$app->review_grade($app->text_rating($i, "institute"))}">
-                          <strong>{$app->text_rating($i, "institute")}</strong>
-                          <em>{$app->review_grade($app->text_rating($i, "institute"))}</em>
-                          <small>Based on {$app->total_review_count($i, "institute")} reviews</small>
-                        </div>
+                <!-- TABS -->
+                <div class="tab-content" id='listing-tabs'>
+                  <div class="tab-pane fade show active" id="main" role="tabpanel" aria-labelledby='main-tab'>
+                    <section class="border-0">
+                      <div class="detail_title_1">
+                        <h1 class="my-2">{$app->int_details($i, 'title')}</h1>
                       </div>
-                      <div class="col-lg-9">
-                        <div class="row">
-                          <div class="col-lg-10 col-9">
-                            <div class="progress">
-                              <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                      <h5>Overriew</h5>
+                      <p>{$app->int_details($i, 'description')}</p>
+                      <h5>Services Offered</h5>
+                      <p>{$app->int_details($i, 'services')}</p>
+                      <hr>
+                      <div class="opening">
+                          <div class="ribbon">
+                              <span class="open">Now Open</span>
                           </div>
-                          <div class="col-lg-2 col-3"><small><strong>5 stars</strong></small></div>
+                          <i class="icon_clock_alt"></i>
+                          <h4>Opening Hours</h4>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <ul>
+                                      <li>Monday <span>9 AM - 5 PM</span></li>
+                                      <li>Tuesday <span>9 AM - 5 PM</span></li>
+                                      <li>Wednesday <span>9 AM - 5 PM</span></li>
+                                      <li>Thursday <span>9 AM - 5 PM</span></li>
+                                  </ul>
+                              </div>
+                              <div class="col-md-6">
+                                  <ul>
+                                      <li>Friday <span>9 AM - 5 PM</span></li>
+                                      <li>Saturday <span>9 AM - 5 PM</span></li>
+                                      <li>Sunday <span>Closed</span></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- /opening -->
+                      <hr>
+                      <h3>Location</h3>
+                      <div id="map" class="map map_single add_bottom_45"></div>
+                      <!-- End Map -->
+                    </section>
+                  </div>
+                  <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby='review-tab'>
+                    <section>
+                      <div class="detail_title_1">
+                        <h1>Reviews &amp; Ratings</h1>
+                      </div>
+                      <div class="add-review">
+                          <h5>Leave a Review</h5>
+                          <form method="post">
+                            <div class="row">
+                              <div class="form-group col-md-6">
+                                <label>Your Rating </label>
+                                <select id="write-review-rating" name="rating">
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                  <option value="6">6</option>
+                                  <option value="7">7</option>
+                                  <option value="8">8</option>
+                                  <option value="9">9</option>
+                                  <option value="10">10</option>
+                                </select>
+                              </div>
+                              <div class="form-group col-md-12">
+                                <label>Your Review</label>
+                                <textarea name="review" id="review_text" class="form-control" placeholder="Be specific and relevant to the place you're reviewing and describe what other visitor are likely to experience. Be authentic and describe why you liked or disliked the place. Include aspects like the ambiance, service quality, value for money, credibility of the vendor, timely delivery" style="height:130px;" required></textarea>
+                              </div>
+                              <div class="form-group col-md-12 add_top_20 add_bottom_30">
+                                <input type="submit" value="Submit" class="btn_1" id="submit-review" name="add-review" >
+                              </div>
+                            </div>
+                          </form>
                         </div>
-                        <!-- /row -->
+                      <hr>
+                      <h2>Reviews</h2>
+                      <div class="reviews-container add_bottom_30">
                         <div class="row">
-                          <div class="col-lg-10 col-9">
-                            <div class="progress">
-                              <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="col-lg-3">
+                            <div id="review_summary" class="{$app->review_grade($app->text_rating($i, "institute"))}">
+                              <strong>{$app->text_rating($i, "institute")}</strong>
+                              <em>{$app->review_grade($app->text_rating($i, "institute"))}</em>
+                              <small>Based on {$app->total_review_count($i, "institute")} reviews</small>
                             </div>
                           </div>
-                          <div class="col-lg-2 col-3"><small><strong>4 stars</strong></small></div>
-                        </div>
-                        <!-- /row -->
-                        <div class="row">
-                          <div class="col-lg-10 col-9">
-                            <div class="progress">
-                              <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="col-lg-9">
+                            <div class="row">
+                              <div class="col-lg-10 col-9">
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                              </div>
+                              <div class="col-lg-2 col-3"><small><strong>5 stars</strong></small></div>
                             </div>
-                          </div>
-                          <div class="col-lg-2 col-3"><small><strong>3 stars</strong></small></div>
-                        </div>
-                        <!-- /row -->
-                        <div class="row">
-                          <div class="col-lg-10 col-9">
-                            <div class="progress">
-                              <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                            <!-- /row -->
+                            <div class="row">
+                              <div class="col-lg-10 col-9">
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                              </div>
+                              <div class="col-lg-2 col-3"><small><strong>4 stars</strong></small></div>
                             </div>
-                          </div>
-                          <div class="col-lg-2 col-3"><small><strong>2 stars</strong></small></div>
-                        </div>
-                        <!-- /row -->
-                        <div class="row">
-                          <div class="col-lg-10 col-9">
-                            <div class="progress">
-                              <div class="progress-bar" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            <!-- /row -->
+                            <div class="row">
+                              <div class="col-lg-10 col-9">
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                              </div>
+                              <div class="col-lg-2 col-3"><small><strong>3 stars</strong></small></div>
                             </div>
+                            <!-- /row -->
+                            <div class="row">
+                              <div class="col-lg-10 col-9">
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                              </div>
+                              <div class="col-lg-2 col-3"><small><strong>2 stars</strong></small></div>
+                            </div>
+                            <!-- /row -->
+                            <div class="row">
+                              <div class="col-lg-10 col-9">
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                              </div>
+                              <div class="col-lg-2 col-3"><small><strong>1 stars</strong></small></div>
+                            </div>
+                            <!-- /row -->
                           </div>
-                          <div class="col-lg-2 col-3"><small><strong>1 stars</strong></small></div>
                         </div>
                         <!-- /row -->
                       </div>
-                    </div>
-                    <!-- /row -->
+                      <div class="reviews-container">
+                        {$app->get_reviews($i, 'institute')}
+                      </div>
+                      <!-- /review-container -->
+                    </section>
                   </div>
-                  <div class="reviews-container">
-                    {$app->get_reviews($i, 'institute')}
+                  <div class="tab-pane fade" id="timeline" role="tabpanel" aria-labelledby='timeline-tab'>
+                    <section>
+                      <div class="detail_title_1">
+                        <h1>Institute's Timeline</h1>
+                      </div>
+                      {$app->get_posts($i, 'institute')}
+                    </section>
                   </div>
-                  <!-- /review-container -->
-                </section>
-                <!-- /section -->
+                </div>
+                <!-- TABS -->
               </div>
               <!-- /col -->
-
               <aside class="col-lg-4" id="sidebar">
                 <div class="box_detail booking">
                   <div class="price">
-                    <span>45$ <small>person</small></span>
-                    <div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div>
+                    <span><img src="/assets/images/icons/{if $app->int_details($i, 'verified') == 'true'}verified{else}not-verified{/if}.png" alt='verification'> {if $app->int_details($i, 'verified') == 'true'}Verified{else}Not Verified{/if}</span>
+                    <div class="score"><span>{$app->review_grade($app->text_rating($i, "institute"))}<em>{$app->total_review_count($i, "institute")} Reviews</em></span><strong>{$app->text_rating($i, "institute")}</strong></div>
                   </div>
-
-                  <div class="form-group" id="input-dates">
-                    <input class="form-control" type="text" name="dates" placeholder="When..">
-                    <i class="icon_calendar"></i>
+                  <h4 class="mb-3">Basic Details</h4>
+                  <p><i class="icon icon-phone"></i><a href='tel://+91 {$app->int_details($i, "phone")}'>+91 {$app->int_details($i, "phone")}</a></p>
+                  <p><i class="icon icon_pin"></i><a href="#">{$app->int_details($i, "address")}</a></p>
+                  <p><i class="icon icon-building"></i><a href="#">{$app->int_details($i, "city")}</a></p>
+                  <p><i class="icon icon-mail-alt"></i><a href='mailto://{$app->int_details($i, "email")}'>Send enquiry by Email</a></p>
+                  <p><i class="icon icon-whatsapp"><img src="/assets/images/icons/whatsapp.png" style='width:16px;margin-left: .2em;margin-right: .2em;' alt=""></i><a href='https://api.whatsapp.com/send?phone=91{$app->int_details($i, "whatsapp")}'>Message on WhatsApp</a></p>
+                  <p><i class="icon icon-globe"></i><a href='{if strpos($app->int_details($i, "website"), "http") == true}{$app->int_details($i, "website")}{else}http://{$app->int_details($i, "website")}{/if}'>{if strpos($app->int_details($i, "website"), "http") == true}{$app->int_details($i, "website")}{else}http://{$app->int_details($i, "website")}{/if}</a></p>
+                  <p><i class="icon icon-calendar-7"></i><a href="#">Year Established - {$app->int_details($i, 'estd')}</a></p>
+                  <hr>
+                  <div>
+                    {$app->int_details($i, 'tags')}
                   </div>
-
-                  <div class="panel-dropdown">
-                    <a href="#">Guests <span class="qtyTotal">1</span></a>
-                    <div class="panel-dropdown-content right">
-                      <div class="qtyButtons">
-                        <label>Adults</label>
-                        <input type="text" name="qtyInput" value="1">
-                      </div>
-                      <div class="qtyButtons">
-                        <label>Childrens</label>
-                        <input type="text" name="qtyInput" value="0">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group clearfix">
-                    <div class="custom-select-form">
-                      <select class="wide">
-                        <option>Room Type</option>
-                        <option>Single Room</option>
-                        <option>Double Room</option>
-                        <option>Suite Room</option>
-                      </select>
-                    </div>
-                  </div>
-                  <a href="checkout.html" class=" add_top_30 btn_1 full-width purchase">Purchase</a>
-                  <a href="wishlist.html" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> Add to wishlist</a>
-                  <div class="text-center"><small>No money charged in this step</small></div>
                 </div>
                 <ul class="share-buttons">
                   <li><a class="fb-share" href="#0"><i class="social_facebook"></i> Share</a></li>
@@ -283,7 +270,31 @@
       }
       $(document).ready(function(){
         set_map(marker);
+        {ldelim}
+          {if isset($review_callback)}
+            {if $review_callback == 'success'}
+              Swal.fire(
+                'Success!',
+                'You successfully reviewed - \n{$app->int_details($i, "name")}\n',
+                'success'
+              )
+            {elseif $review_callback == 'error'}
+              Swal.fire(
+                'Something went wrong!',
+                'It&apos;s not you It&apos;s us.',
+                'error'
+              )
+            {elseif $review_callback == 'duplicate'}
+              Swal.fire(
+                'Play fair!',
+                'You already reviewed - \n{$app->int_details($i, "name")}\n',
+                'warning'
+              )
+            {/if}
+          {/if}
+        {rdelim}
       })
+
     </script>
   </body>
 </html>

@@ -9,30 +9,28 @@
 
   // ACCOUNT
   $router->get('/account', function() {
-      global $view;
       global $app;
-      global $id;
       $id = $_SESSION['user_id'];
+      $GLOBALS['smarty']->assign('i', $id);
       if ($app->user_details($id, 'role') == 'student') {
-        $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/student_profile.php";
+        $GLOBALS['smarty']->display('pages/student-profile.tpl');
       }
       if ($app->user_details($id, 'role') == 'business') {
-        $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/business_profile.php";
+        $GLOBALS['smarty']->display('pages/business-profile.tpl');
       }
   });
   $router->post('/account', function() {
-      global $view;
       global $app;
-      global $id;
       $id = $_SESSION['user_id'];
+      $GLOBALS['smarty']->assign('i', $id);
       if ($app->user_details($id, 'role') == 'student') {
-        $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/student_profile.php";
+        $GLOBALS['smarty']->display('pages/student-profile.tpl');
         if (isset($_POST['add-student-info'])) {
           $app->add_student_data($id);
         }
       }
       if ($app->user_details($id, 'role') == 'business') {
-        $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/business_profile.php";
+        $GLOBALS['smarty']->display('pages/business-profile.tpl');
         if (isset($_POST['post_mcq'])) {
           $app->add_mcq($_POST["for_int"]);
         }
@@ -75,8 +73,6 @@
       $GLOBALS['smarty']->display('pages/login.tpl');
   });
   $router->post('/login', function() {
-      global $view;
-      require $_SERVER["DOCUMENT_ROOT"].'/inc/classes/authentication.php';
       if (isset($_POST['login']) && isset($_POST['email'])) {
         $auth = new Authentication();
         $auth->login();
@@ -99,13 +95,15 @@
       global $app;
       $i = $value;
       if (isset($_POST['add-review'])) {
-        $app->addReview($i, 'institute');
+        $callback = $app->addReview($i, 'institute');
+        $GLOBALS['smarty']->assign('review_callback', $callback);
       } elseif (isset($_POST['add-post'])) {
         $app->addPost($i, 'institute');
       } elseif (isset($_POST["add-mcq-set"])) {
         $app->add_mcq($i);
       }
-      $view = $_SERVER["DOCUMENT_ROOT"]."/inc/views/institute.php";
+      $GLOBALS['smarty']->assign('i', $value);
+      $GLOBALS['smarty']->display('pages/institute.tpl');
   });
   // End Institutes
 

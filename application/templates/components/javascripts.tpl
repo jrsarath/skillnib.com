@@ -1,4 +1,5 @@
 <script src="/assets/js/vendors.js"></script>
+<script src="/assets/js/jquery.barrating.min.js" charset="utf-8"></script>
 <script src="/assets/js/droopmenu.min.js" charset="utf-8"></script>
 <script src="/assets/js/sweetalert2.min.js" charset="utf-8"></script>
 <script src="/assets/js/tinymce.min.js"></script>

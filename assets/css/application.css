@@ -20,7 +20,7 @@ footer ul.links li a:after {
 a.btn_add, .btn_add {
   background-color: #004dda;
 }
-ul#top_menu li a.account {
+ul#top_menu li a.account, ul#top_menu li a.search {
   width: 25px;
   margin-top: 3px;
 }
@@ -36,8 +36,17 @@ ul#top_menu li a.account:before {
   font-weight: normal;
   line-height: 1;
 }
-.cat_star {
-  margin-bottom: 10px;
+ul#top_menu li a.search:before {
+  content: "\e610";
+  font-family: 'themify';
+  font-size: 21px;
+  font-size: 1.3125rem;
+  text-indent: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: normal;
+  line-height: 1;
 }
 .cat_star i {
     margin-right: 2px;
@@ -46,6 +55,84 @@ ul#top_menu li a.account:before {
 }
 .Poor {
   background-color: #ef5350 !important;
+}
+.br-current-rating {
+  display: none !important;
+}
+.post_info p {
+  margin-bottom: 16px;
+}
+.hero_in.hotels_detail {
+    height: 250px;
+}
+.hero_in a.btn_photos {
+  position: relative;
+  height: 35px;
+}
+.hero-container {
+  display: flex;
+  height: 100%;
+}
+.hero_in .detail_title_1 h1{
+  color: #fff;
+}
+.hero_in .detail_title_1 .address {
+  color: #eceff1
+}
+.hero_in.hotels_detail .wrapper {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.booking a {
+  color: #212121;
+}
+.booking a:hover {
+  color: #007bff;
+}
+.booking .icon {
+  margin-right: 20px;
+}
+.booking p {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+.tag {
+  background: #f5f5f5;
+  padding: 4px 20px;
+  border-radius: 5px;
+  color: #212121;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  display: inline-block;
+  border: solid 1px lightgrey;
+}
+.box_detail .price > span {
+  font-size: 18px;
+}
+.search-bar {
+  padding: 20px 0;
+  color: #fff;
+  background: #004dda;
+  position: relative;
+  z-index: 999 !important;
+}
+.search-bar h4 {
+    color: #fff;
+    margin: 12px 0 0 0;
+    padding: 0;
+    line-height: 1;
+    font-size: 16px;
+    font-size: 1rem;
+}
+@media (max-width: 767px) {
+  .search-bar {
+    display: none;
+  }
+  .hero_in.hotels_detail {
+      height: 350px;
+  }
+  .h-sm-50 {
+    height: 50%;
+  }
 }
 @media (max-width: 576px) {
   #login, #signup {
