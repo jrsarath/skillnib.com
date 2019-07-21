@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Login</title>
+    <title></title>
     {include file='components/head.tpl'}
     <meta name="description" content="SPARKER - Premium directory and listings template by Ansonika.">
   </head>

@@ -123,6 +123,39 @@ ul#top_menu li a.search:before {
     font-size: 16px;
     font-size: 1rem;
 }
+.strip figure .read_more span {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+.w-100 .nice-select {
+  width: inherit;
+}
+.box_general .nice-select {
+  border: 1px solid #ededed;
+  border-radius: 3px;
+}
+.dropzone .dz-default.dz-message span {
+  color: #004dda !important;
+}
+.header_box {
+  padding-bottom: 10px;
+}
+.header_box.version_2 {
+  border-bottom: 1px solid #ededed;
+  margin: 0 -30px;
+  padding: 0 30px 10px 30px;
+  margin-bottom: 15px;
+}
+.header_box.version_2 i {
+  margin-right: 10px;
+  color: #ddd;
+}
+.header_box h2 {
+  font-size: 21px;
+  font-size: 1.3125rem;
+  display: inline-block;
+  margin-top: 5px;
+}
 @media (max-width: 767px) {
   .search-bar {
     display: none;

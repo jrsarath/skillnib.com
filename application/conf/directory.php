@@ -3,3 +3,4 @@
   $vendors = $docroot.'/application/vendor/';
   $classes = $docroot.'/application/classes/';
   $templates = $docroot.'/application/templates/';
+  $subclasses = $docroot.'/application/classes/sub-classes/';

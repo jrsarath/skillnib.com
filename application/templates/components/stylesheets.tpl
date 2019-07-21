@@ -9,4 +9,6 @@
 <link rel="stylesheet" href="/assets/css/ionicons.css" />
 <link rel="stylesheet" href="/assets/css/droopmenu.css" />
 <link rel="stylesheet" href="/assets/css/blog.css" />
+<link rel="stylesheet" href="/assets/js/editor/summernote-bs4.css">
+<link rel="stylesheet" href="/assets/css/dropzone.css">
 <link rel="stylesheet" href="/assets/css/application.css?v={time()}" />

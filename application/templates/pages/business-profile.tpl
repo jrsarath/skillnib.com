@@ -16,14 +16,18 @@
         <li class="breadcrumb-item active">My Dashboard</li>
       </ol>
       <div class="row">
-        <div class="col-3">
-          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" data-toggle="pill" href="#home" role="tab">Home</a>
-            <a class="nav-link" data-toggle="pill" href="#orgs" role="tab">My Listings</a>
-            <a class="nav-link" data-toggle="pill" href="#mcqs" role="tab">My MCQs</a>
-            <a class="nav-link" data-toggle="pill" href="#account" role="tab">My Account</a>
-          </div>
-        </div>
+        <aside class="col-lg-3 sidenav-pills">
+						<div class="box_style_cat">
+							<ul class="nav cat_nav" role="tablist">
+								<li><a data-toggle="pill" href="#home" role="tab" class="active"><i class="icon_document_alt"></i>Home</a></li>
+								<li><a data-toggle="pill" href="#orgs" role="tab"><i class="icon_document_alt"></i>My Organizations</a></li>
+								<li><a data-toggle="pill" href="#mcqs" role="tab"><i class="icon_document_alt"></i>My MCQs</a></li>
+								<li><a data-toggle="pill" href="#account" role="tab"><i class="icon_document_alt"></i>My Account</a></li>
+							</ul>
+						</div>
+						<!--/sticky -->
+				</aside>
+				<!--/aside -->
         <div class="col-9">
           <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel">
@@ -35,14 +39,8 @@
                       <div class="card-body-icon">
                         <i class="fa fa-fw fa-envelope-open"></i>
                       </div>
-                      <div class="mr-5"><h5>26 New Messages!</h5></div>
+                      <div><h5>02 Total Institutes</h5></div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="messages.html">
-                      <span class="float-left">View Details</span>
-                      <span class="float-right">
-                        <i class="fa fa-angle-right"></i>
-                      </span>
-                    </a>
                   </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 mb-3">
@@ -51,14 +49,8 @@
                       <div class="card-body-icon">
                         <i class="fa fa-fw fa-star"></i>
                       </div>
-        				<div class="mr-5"><h5>11 New Reviews!</h5></div>
+        				      <div><h5>06 Total Colleges</h5></div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="reviews.html">
-                      <span class="float-left">View Details</span>
-                      <span class="float-right">
-                        <i class="fa fa-angle-right"></i>
-                      </span>
-                    </a>
                   </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 mb-3">
@@ -67,14 +59,8 @@
                       <div class="card-body-icon">
                         <i class="fa fa-fw fa-calendar-check-o"></i>
                       </div>
-                      <div class="mr-5"><h5>10 New Bookings!</h5></div>
+                      <div><h5>10 Job Consultancy</h5></div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="bookings.html">
-                      <span class="float-left">View Details</span>
-                      <span class="float-right">
-                        <i class="fa fa-angle-right"></i>
-                      </span>
-                    </a>
                   </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 mb-3">
@@ -83,14 +69,8 @@
                       <div class="card-body-icon">
                         <i class="fa fa-fw fa-heart"></i>
                       </div>
-                      <div class="mr-5"><h5>10 New Bookmarks!</h5></div>
+                      <div><h5>10 Tuitions Below XII</h5></div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="bookmarks.html">
-                      <span class="float-left">View Details</span>
-                      <span class="float-right">
-                        <i class="fa fa-angle-right"></i>
-                      </span>
-                    </a>
                   </div>
                 </div>
           		</div>
@@ -102,11 +82,98 @@
           		</div>
             </div>
             <div class="tab-pane fade" id="orgs" role="tabpanel">
+              <!-- Icon Cards-->
+              <div class="row">
+                <div class="col-xl-3 col-sm-6 mb-3">
+                  <div class="card dashboard text-white bg-primary o-hidden h-100">
+                    <div class="card-body">
+        				      <div><h5>Add New Institute</h5></div>
+                    </div>
+                    <a class="card-footer text-white clearfix small z-1" href="/account/add/institute">
+                      <span class="float-left">Add Now</span>
+                      <span class="float-right">
+                        <i class="ti-arrow-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                  <div class="card dashboard text-white bg-warning o-hidden h-100">
+                    <div class="card-body">
+        				      <div><h5>Add New College</h5></div>
+                    </div>
+                    <a class="card-footer text-white clearfix small z-1" href="/account/add/college">
+                      <span class="float-left">Add Now</span>
+                      <span class="float-right">
+                        <i class="ti-arrow-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                  <div class="card dashboard text-white bg-success o-hidden h-100">
+                    <div class="card-body">
+        				      <div><h5>Add New Tuition(XII)</h5></div>
+                    </div>
+                    <a class="card-footer text-white clearfix small z-1" href="/account/add/tuition">
+                      <span class="float-left">Add Now</span>
+                      <span class="float-right">
+                        <i class="ti-arrow-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 mb-3">
+                  <div class="card dashboard text-white bg-danger o-hidden h-100">
+                    <div class="card-body">
+        				      <div><h5>Add New Job Consultancy</h5></div>
+                    </div>
+                    <a class="card-footer text-white clearfix small z-1" href="/account/add/institute">
+                      <span class="float-left">Add Now</span>
+                      <span class="float-right">
+                        <i class="ti-arrow-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- INSTITUTES -->
               <div class="box_general">
-          			<div class="header_box version_2">
-          				<h2><i class="fa fa-bar-chart"></i>My Listings</h2>
+          			<div class="header_box">
+          				<h2><i class="fa fa-bar-chart"></i>My Institutes</h2>
           			</div>
           		</div>
+              <div>
+                {$app->get_my_inst($id, 'card')}
+              </div>
+              <!-- COLLEGES -->
+              <div class="box_general">
+          			<div class="header_box">
+          				<h2><i class="fa fa-bar-chart"></i>My Colleges</h2>
+          			</div>
+
+          		</div>
+              <div>
+                {$app->get_my_colg($id, 'card')}
+              </div>
+              <!-- TUITIONS -->
+              <div class="box_general">
+          			<div class="header_box">
+          				<h2><i class="fa fa-bar-chart"></i>My Tuitions Below XII</h2>
+          			</div>
+          		</div>
+              <div>
+                {$app->get_my_tuitions($id, 'card')}
+              </div>
+              <!-- JOB CONSULTANCIES -->
+              <div class="box_general">
+          			<div class="header_box">
+          				<h2><i class="fa fa-bar-chart"></i>My Job Consultancies</h2>
+          			</div>
+          		</div>
+              <div>
+                {$app->get_my_jobc($id, 'card')}
+              </div>
             </div>
             <div class="tab-pane fade" id="mcqs" role="tabpanel">
               <div class="box_general">

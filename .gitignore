@@ -4,3 +4,4 @@
 /global/vendor/
 /application/templates_cache/
 error_log
+.ftpconfig

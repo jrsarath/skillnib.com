@@ -14,168 +14,223 @@
       $this->db = $DBHelper->connect();
       $this->debug = $DBHelper->debug();
     }
-    // INSTITUTE DETAILS
-    function int_details($i, $d) {
-      if ($result = mysqli_query($this->db, "SELECT $d FROM institutes WHERE slug='$i'")) {
-        $row = mysqli_fetch_assoc($result);
-        if ($d == 'images') {
-          $img = explode(',', $row[$d]);
-          $index = 0;
-          foreach($img as &$key) {
-            if ($index == 0) {
-              echo '<a href="'.$key.'" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>';
-            } else {
-              echo '<a href="'.$key.'" title="Photo title" data-effect="mfp-zoom-in"></a>';
-            }
-            $index++;
-          }
-        } elseif ($d == 'categories' || $d == 'tags') {
-          $item = explode(',', $row[$d]);
-          foreach ($item as &$tag) {
-            echo '<span class="tag">'.$tag.'</span>';
-          }
-        } else {
-          return $row[$d];
-        }
-      } else {
-        $this->debug_error();
-      }
-    }
-    function int_details_raw($i, $d) {
-      if ($result = mysqli_query($this->db, "SELECT $d FROM institutes WHERE slug='$i'")) {
-        $row = mysqli_fetch_assoc($result);
-        return $row[$d];
-      } else {
-        $this->debug_error();
-      }
-    }
-    // END INSTITUTE DETAILS
 
-    // COLLEGE DETAILS
-    function clg_details($i, $d) {
-      if ($result = mysqli_query($this->db, "SELECT $d FROM colleges WHERE slug='$i'")) {
-        $row = mysqli_fetch_assoc($result);
-        if ($d == 'images') {
-          $img = explode(',', $row[$d]);
-          $index = 0;
-          foreach($img as &$key) {
-            if ($index == 0) {
-              echo '<a href="'.$key.'" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>';
+    /**
+     * LISTING DETAIL FUNCTIONS
+     * LISTING DETAILS
+     * LISTING RAW DETAILS
+     */
+          // INSTITUTE DETAILS
+          function int_details($i, $d) {
+            if ($result = mysqli_query($this->db, "SELECT $d FROM institutes WHERE slug='$i'")) {
+              $row = mysqli_fetch_assoc($result);
+              if ($d == 'images') {
+                $img = explode(',', $row[$d]);
+                $index = 0;
+                foreach($img as &$key) {
+                  if ($index == 0) {
+                    echo '<a href="'.$key.'" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>';
+                  } else {
+                    echo '<a href="'.$key.'" title="Photo title" data-effect="mfp-zoom-in"></a>';
+                  }
+                  $index++;
+                }
+              } elseif ($d == 'categories' || $d == 'tags') {
+                $item = explode(',', $row[$d]);
+                foreach ($item as &$tag) {
+                  echo '<span class="tag">'.$tag.'</span>';
+                }
+              } else {
+                return $row[$d];
+              }
             } else {
-              echo '<a href="'.$key.'" title="Photo title" data-effect="mfp-zoom-in"></a>';
+              $this->debug_error();
             }
-            $index++;
           }
-        } elseif ($d == 'exams' || $d == 'tags' || $d == 'degree') {
-          $item = explode(',', $row[$d]);
-          foreach ($item as &$tag) {
-            echo '<span class="tag">'.$tag.'</span>';
-          }
-        } elseif ($d == 'facilities') {
-          $item = explode(',', $row[$d]);
-          foreach ($item as &$tag) {
-            echo '<span class="facility">'.$tag.'</span>';
-          }
-        } else {
-          return $row[$d];
-        }
-      } else {
-        $this->debug_error();
-      }
-    }
-    function clg_details_raw($i, $d) {
-      if ($result = mysqli_query($this->db, "SELECT $d FROM colleges WHERE slug='$i'")) {
-        $row = mysqli_fetch_assoc($result);
-        return $row[$d];
-      } else {
-        $this->debug_error();
-      }
-    }
-    // END COLLEGE DETAILS
-
-    // JOB CONSULTANCY DETAILS
-    function job_details($i, $d) {
-      if ($result = mysqli_query($this->db, "SELECT $d FROM job_consultancy WHERE slug='$i'")) {
-        $row = mysqli_fetch_assoc($result);
-        if ($d == 'images') {
-          $img = explode(',', $row[$d]);
-          $index = 0;
-          foreach($img as &$key) {
-            if ($index == 0) {
-              echo '<a href="'.$key.'" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>';
+          function int_details_raw($i, $d) {
+            if ($result = mysqli_query($this->db, "SELECT $d FROM institutes WHERE slug='$i'")) {
+              $row = mysqli_fetch_assoc($result);
+              return $row[$d];
             } else {
-              echo '<a href="'.$key.'" title="Photo title" data-effect="mfp-zoom-in"></a>';
+              $this->debug_error();
             }
-            $index++;
           }
-        } elseif ($d == 'exams' || $d == 'tags' || $d == 'degree') {
-          $item = explode(',', $row[$d]);
-          foreach ($item as &$tag) {
-            echo '<span class="tag">'.$tag.'</span>';
+          // END INSTITUTE DETAILS
+          // COLLEGE DETAILS
+          function clg_details($i, $d) {
+            if ($result = mysqli_query($this->db, "SELECT $d FROM colleges WHERE slug='$i'")) {
+              $row = mysqli_fetch_assoc($result);
+              if ($d == 'images') {
+                $img = explode(',', $row[$d]);
+                $index = 0;
+                foreach($img as &$key) {
+                  if ($index == 0) {
+                    echo '<a href="'.$key.'" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>';
+                  } else {
+                    echo '<a href="'.$key.'" title="Photo title" data-effect="mfp-zoom-in"></a>';
+                  }
+                  $index++;
+                }
+              } elseif ($d == 'exams' || $d == 'tags' || $d == 'degree') {
+                $item = explode(',', $row[$d]);
+                foreach ($item as &$tag) {
+                  echo '<span class="tag">'.$tag.'</span>';
+                }
+              } elseif ($d == 'facilities') {
+                $item = explode(',', $row[$d]);
+                foreach ($item as &$tag) {
+                  echo '<span class="facility">'.$tag.'</span>';
+                }
+              } else {
+                return $row[$d];
+              }
+            } else {
+              $this->debug_error();
+            }
           }
-        } elseif ($d == 'facilities') {
-          $item = explode(',', $row[$d]);
-          foreach ($item as &$tag) {
-            echo '<span class="facility">'.$tag.'</span>';
+          function clg_details_raw($i, $d) {
+            if ($result = mysqli_query($this->db, "SELECT $d FROM colleges WHERE slug='$i'")) {
+              $row = mysqli_fetch_assoc($result);
+              return $row[$d];
+            } else {
+              $this->debug_error();
+            }
           }
-        } else {
-          return $row[$d];
-        }
-      } else {
-        $this->debug_error();
-      }
-    }
-    function job_details_raw($i, $d) {
-      if ($result = mysqli_query($this->db, "SELECT $d FROM job_consultancy WHERE slug='$i'")) {
-        $row = mysqli_fetch_assoc($result);
-        return $row[$d];
-      } else {
-        $this->debug_error();
-      }
-    }
-    // END JOB CONSULTANCY DETAILS
+          // END COLLEGE DETAILS
+          // JOB CONSULTANCY DETAILS
+          function job_details($i, $d) {
+            if ($result = mysqli_query($this->db, "SELECT $d FROM job_consultancy WHERE slug='$i'")) {
+              $row = mysqli_fetch_assoc($result);
+              if ($d == 'images') {
+                $img = explode(',', $row[$d]);
+                $index = 0;
+                foreach($img as &$key) {
+                  if ($index == 0) {
+                    echo '<a href="'.$key.'" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>';
+                  } else {
+                    echo '<a href="'.$key.'" title="Photo title" data-effect="mfp-zoom-in"></a>';
+                  }
+                  $index++;
+                }
+              } elseif ($d == 'exams' || $d == 'tags' || $d == 'degree') {
+                $item = explode(',', $row[$d]);
+                foreach ($item as &$tag) {
+                  echo '<span class="tag">'.$tag.'</span>';
+                }
+              } elseif ($d == 'facilities') {
+                $item = explode(',', $row[$d]);
+                foreach ($item as &$tag) {
+                  echo '<span class="facility">'.$tag.'</span>';
+                }
+              } else {
+                return $row[$d];
+              }
+            } else {
+              $this->debug_error();
+            }
+          }
+          function job_details_raw($i, $d) {
+            if ($result = mysqli_query($this->db, "SELECT $d FROM job_consultancy WHERE slug='$i'")) {
+              $row = mysqli_fetch_assoc($result);
+              return $row[$d];
+            } else {
+              $this->debug_error();
+            }
+          }
+          // END JOB CONSULTANCY DETAILS
+          // TUITION DETAILS
+          function tuition_details($i, $d) {
+            if ($result = mysqli_query($this->db, "SELECT $d FROM tuition WHERE slug='$i'")) {
+              $row = mysqli_fetch_assoc($result);
+              if ($d == 'images') {
+                $img = explode(',', $row[$d]);
+                foreach($img as &$key) {
+                  echo '
+                  <div class="portfolio-item">
+                    <a href="'.$key.'" data-lightbox="portfolio-image">
+                      <img src="'.$key.'" class="img-fluid" alt="">
+                    </a>
+                  </div>
+                  ';
+                }
+              } elseif ($d == 'exams' || $d == 'tags' || $d == 'degree') {
+                $item = explode(',', $row[$d]);
+                foreach ($item as &$tag) {
+                  echo '<span class="tag">'.$tag.'</span>';
+                }
+              } elseif ($d == 'facilities') {
+                $item = explode(',', $row[$d]);
+                foreach ($item as &$tag) {
+                  echo '<span class="facility">'.$tag.'</span>';
+                }
+              } else {
+                return $row[$d];
+              }
+            } else {
+              $this->debug_error();
+            }
+          }
+          function tuition_details_raw($i, $d) {
+            if ($result = mysqli_query($this->db, "SELECT $d FROM tuition WHERE slug='$i'")) {
+              $row = mysqli_fetch_assoc($result);
+              return $row[$d];
+            } else {
+              $this->debug_error();
+            }
+          }
+          // END TUITION DETAILS
 
-    // TUITION DETAILS
-    function tuition_details($i, $d) {
-      if ($result = mysqli_query($this->db, "SELECT $d FROM tuition WHERE slug='$i'")) {
-        $row = mysqli_fetch_assoc($result);
-        if ($d == 'images') {
-          $img = explode(',', $row[$d]);
-          foreach($img as &$key) {
-            echo '
-            <div class="portfolio-item">
-              <a href="'.$key.'" data-lightbox="portfolio-image">
-                <img src="'.$key.'" class="img-fluid" alt="">
-              </a>
-            </div>
-            ';
+    /**
+     * ADD LISTING FUNCTIONS
+     */
+          // ADD INSTITUTE
+          function add_institute(){
+            $hours = $this->safeValuePost('monday-opening').'-'.$this->safeValuePost('monday-closing').','.$this->safeValuePost('tuesday-opening').'-'.$this->safeValuePost('tuesday-closing').','.$this->safeValuePost('wednesday-opening').'-'.$this->safeValuePost('wednesday-closing').','.$this->safeValuePost('thursday-opening').'-'.$this->safeValuePost('thursday-closing').','.$this->safeValuePost('friday-opening').'-'.$this->safeValuePost('friday-closing').','.$this->safeValuePost('saturday-opening').'-'.$this->safeValuePost('saturday-closing').','.$this->safeValuePost('sunday-opening').'-'.$this->safeValuePost('sunday-closing');
+            $query = "INSERT INTO institutes(owner,name,categories,estd,phone,email,address,city,state,zipcode,profile_image,cover_image,images,description,services,whatsapp,website,keywords,hours,tags,longitude,latitude)
+                                      VALUES('".$_SESSION['user_id']."','".$this->safeValuePost('name')."','".$this->safeValuePost('category')."','".$this->safeValuePost('estd')."','".$this->safeValuePost('phone')."','".$this->safeValuePost('email')."','".$this->safeValuePost('address')."','".$this->safeValuePost('city')."','".$this->safeValuePost('state')."','".$this->safeValuePost('pincode')."','".$this->safeValuePost('profile_image')."','".$this->safeValuePost('cover_image')."','".$this->safeValuePost('featured_images')."','".$this->safeValuePost('description')."','".$this->safeValuePost('services')."','".$this->safeValuePost('whatsapp')."','".$this->safeValuePost('website')."','".$this->safeValuePost('keywords')."','$hours','".$this->safeValuePost('tags')."','".$this->safeValuePost('longitude')."','".$this->safeValuePost('latitude')."')";
+            if (mysqli_query($this->db, $query)) {
+              return 'success';
+            } else {
+              $this->debug_error();
+              return 'error';
+            }
           }
-        } elseif ($d == 'exams' || $d == 'tags' || $d == 'degree') {
-          $item = explode(',', $row[$d]);
-          foreach ($item as &$tag) {
-            echo '<span class="tag">'.$tag.'</span>';
+          // ADD COLLEGE
+          function add_college(){
+            $hours = $this->safeValuePost('monday-opening').'-'.$this->safeValuePost('monday-closing').','.$this->safeValuePost('tuesday-opening').'-'.$this->safeValuePost('tuesday-closing').','.$this->safeValuePost('wednesday-opening').'-'.$this->safeValuePost('wednesday-closing').','.$this->safeValuePost('thursday-opening').'-'.$this->safeValuePost('thursday-closing').','.$this->safeValuePost('friday-opening').'-'.$this->safeValuePost('friday-closing').','.$this->safeValuePost('saturday-opening').'-'.$this->safeValuePost('saturday-closing').','.$this->safeValuePost('sunday-opening').'-'.$this->safeValuePost('sunday-closing');
+            $query = "INSERT INTO institutes(owner,name,categories,estd,phone,email,address,city,state,zipcode,profile_image,cover_image,images,description,services,whatsapp,website,keywords,hours,tags,longitude,latitude)
+                                      VALUES('".$_SESSION['user_id']."','".$this->safeValuePost('name')."','".$this->safeValuePost('category')."','".$this->safeValuePost('estd')."','".$this->safeValuePost('phone')."','".$this->safeValuePost('email')."','".$this->safeValuePost('address')."','".$this->safeValuePost('city')."','".$this->safeValuePost('state')."','".$this->safeValuePost('pincode')."','".$this->safeValuePost('profile_image')."','".$this->safeValuePost('cover_image')."','".$this->safeValuePost('featured_images')."','".$this->safeValuePost('description')."','".$this->safeValuePost('services')."','".$this->safeValuePost('whatsapp')."','".$this->safeValuePost('website')."','".$this->safeValuePost('keywords')."','$hours','".$this->safeValuePost('tags')."','".$this->safeValuePost('longitude')."','".$this->safeValuePost('latitude')."')";
+            if (mysqli_query($this->db, $query)) {
+              return 'success';
+            } else {
+              $this->debug_error();
+              return 'error';
+            }
           }
-        } elseif ($d == 'facilities') {
-          $item = explode(',', $row[$d]);
-          foreach ($item as &$tag) {
-            echo '<span class="facility">'.$tag.'</span>';
+          // ADD TUITION
+          function add_tuition(){
+            $hours = $this->safeValuePost('monday-opening').'-'.$this->safeValuePost('monday-closing').','.$this->safeValuePost('tuesday-opening').'-'.$this->safeValuePost('tuesday-closing').','.$this->safeValuePost('wednesday-opening').'-'.$this->safeValuePost('wednesday-closing').','.$this->safeValuePost('thursday-opening').'-'.$this->safeValuePost('thursday-closing').','.$this->safeValuePost('friday-opening').'-'.$this->safeValuePost('friday-closing').','.$this->safeValuePost('saturday-opening').'-'.$this->safeValuePost('saturday-closing').','.$this->safeValuePost('sunday-opening').'-'.$this->safeValuePost('sunday-closing');
+            $query = "INSERT INTO institutes(owner,name,categories,estd,phone,email,address,city,state,zipcode,profile_image,cover_image,images,description,services,whatsapp,website,keywords,hours,tags,longitude,latitude)
+                                      VALUES('".$_SESSION['user_id']."','".$this->safeValuePost('name')."','".$this->safeValuePost('category')."','".$this->safeValuePost('estd')."','".$this->safeValuePost('phone')."','".$this->safeValuePost('email')."','".$this->safeValuePost('address')."','".$this->safeValuePost('city')."','".$this->safeValuePost('state')."','".$this->safeValuePost('pincode')."','".$this->safeValuePost('profile_image')."','".$this->safeValuePost('cover_image')."','".$this->safeValuePost('featured_images')."','".$this->safeValuePost('description')."','".$this->safeValuePost('services')."','".$this->safeValuePost('whatsapp')."','".$this->safeValuePost('website')."','".$this->safeValuePost('keywords')."','$hours','".$this->safeValuePost('tags')."','".$this->safeValuePost('longitude')."','".$this->safeValuePost('latitude')."')";
+            if (mysqli_query($this->db, $query)) {
+              return 'success';
+            } else {
+              $this->debug_error();
+              return 'error';
+            }
           }
-        } else {
-          return $row[$d];
-        }
-      } else {
-        $this->debug_error();
-      }
-    }
-    function tuition_details_raw($i, $d) {
-      if ($result = mysqli_query($this->db, "SELECT $d FROM tuition WHERE slug='$i'")) {
-        $row = mysqli_fetch_assoc($result);
-        return $row[$d];
-      } else {
-        $this->debug_error();
-      }
-    }
-    // END TUITION DETAILS
+          // ADD JOB CONSULTANCY
+          function add_job_consultancy(){
+            $hours = $this->safeValuePost('monday-opening').'-'.$this->safeValuePost('monday-closing').','.$this->safeValuePost('tuesday-opening').'-'.$this->safeValuePost('tuesday-closing').','.$this->safeValuePost('wednesday-opening').'-'.$this->safeValuePost('wednesday-closing').','.$this->safeValuePost('thursday-opening').'-'.$this->safeValuePost('thursday-closing').','.$this->safeValuePost('friday-opening').'-'.$this->safeValuePost('friday-closing').','.$this->safeValuePost('saturday-opening').'-'.$this->safeValuePost('saturday-closing').','.$this->safeValuePost('sunday-opening').'-'.$this->safeValuePost('sunday-closing');
+            $query = "INSERT INTO institutes(owner,name,categories,estd,phone,email,address,city,state,zipcode,profile_image,cover_image,images,description,services,whatsapp,website,keywords,hours,tags,longitude,latitude)
+                                      VALUES('".$_SESSION['user_id']."','".$this->safeValuePost('name')."','".$this->safeValuePost('category')."','".$this->safeValuePost('estd')."','".$this->safeValuePost('phone')."','".$this->safeValuePost('email')."','".$this->safeValuePost('address')."','".$this->safeValuePost('city')."','".$this->safeValuePost('state')."','".$this->safeValuePost('pincode')."','".$this->safeValuePost('profile_image')."','".$this->safeValuePost('cover_image')."','".$this->safeValuePost('featured_images')."','".$this->safeValuePost('description')."','".$this->safeValuePost('services')."','".$this->safeValuePost('whatsapp')."','".$this->safeValuePost('website')."','".$this->safeValuePost('keywords')."','$hours','".$this->safeValuePost('tags')."','".$this->safeValuePost('longitude')."','".$this->safeValuePost('latitude')."')";
+            if (mysqli_query($this->db, $query)) {
+              return 'success';
+            } else {
+              $this->debug_error();
+              return 'error';
+            }
+          }
 
     // EXAM DETAILS
     function exam_details($i, $d) {
@@ -410,7 +465,7 @@
       if ($result = mysqli_query($this->db, "SELECT * FROM posts WHERE parent_id='$id' ORDER BY id DESC")) {
         if (mysqli_num_rows($result) > 0) {
           while ($row = mysqli_fetch_assoc($result)) {
-            echo '            
+            echo '
               <article class="blog">
 								<div class="post_info">
 									<small>'.explode('-', $row["date"])[0].'</small>
@@ -655,27 +710,27 @@
           if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)){
               $data = '
-                <div class="custom-card p-0" style="background-image: url('.$row["cover_image"].')">
-                  <div class="overlay"></div>
-                  <div class="row">
-                    <div class="col-4">
-                      <img class="img-100" src="'.$row["profile_image"].'" alt="" />
+                <div class="strip list_view">
+                  <div class="row no-gutters">
+                    <div class="col-lg-5">
+                      <figure>
+                        <a href="/institute/'.$row["slug"].'"><img src="'.$row["profile_image"].'" class="img-fluid" alt=""><div class="read_more"><span>Visit Institute</span></div></a>
+                      </figure>
                     </div>
-                    <div class="col-8 text-white account-card-content-wrapper">
-                      <div class="account-card-content">
-                        <h6>'.$row["name"].'</h6>
-                        <p><a href="/institute/'.$row["slug"].'">@'.$row["slug"].'</a></p>
-                        <div class="mb-4">
-                          <b class="rating">'.$this->text_rating($row["slug"], 'institute').'</b>
-                          '.$this->get_total_rating($row["slug"], 'institute').'
-                        </div>
-                        <a href="/account/edit?type=institute&slug='.$row["slug"].'" class="button">Update Info</a>
-
+                    <div class="col-lg-7">
+                      <div class="wrapper">
+                        <h3><a href="/institute/'.$row["slug"].'">'.$row["name"].'</a></h3>
+                        <small>@'.$row["slug"].'</small>
+                        <p>'.$this->limit_text(strval($row["description"]), 43).'</p>
                       </div>
+                      <ul>
+      									<li><div class="score"><strong>'.$this->text_rating($row["slug"], 'institute').'</strong><span class="text-left ml-2">Superb<em>'.$this->total_review_count($row["slug"], "institute").' Reviews</em></span></div></li>
+                        <li><a href="/account/edit/institute?slug='.$row["slug"].'" class="btn_add">Update Info</a></li>
+      								</ul>
                     </div>
                   </div>
                 </div>
-              ';
+                ';
               echo $data;
             }
           } else {
@@ -701,27 +756,31 @@
           if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)){
               $data = '
-                <div class="custom-card p-0" style="background-image: url('.$row["cover_image"].')">
-                  <div class="overlay"></div>
-                  <div class="row">
-                    <div class="col-4">
-                      <img class="img-100" src="'.$row["profile_image"].'" alt="" />
+                <div class="strip list_view">
+                  <div class="row no-gutters">
+                    <div class="col-lg-5">
+                      <figure>
+                        <a href="/college/'.$row["slug"].'"><img src="'.$row["profile_image"].'" class="img-fluid" alt=""><div class="read_more"><span>Visit Institute</span></div></a>
+                      </figure>
                     </div>
-                    <div class="col-8 text-white account-card-content-wrapper">
-                      <div class="account-card-content">
-                        <h6>'.$row["name"].'</h6>
-                        <p><a href="/college/'.$row["slug"].'">@'.$row["slug"].'</a></p>
-                        <div class="mb-4">
-                          <b class="rating">'.$this->text_rating($row["slug"], 'college').'</b>
-                          '.$this->get_total_rating($row["slug"], 'college').'
-                        </div>
-                        <a href="/account/edit?type=college&slug='.$row["slug"].'" class="button">Update Info</a>
-
+                    <div class="col-lg-7">
+                      <div class="wrapper">
+                        <h3><a href="/college/'.$row["slug"].'">'.$row["name"].'</a></h3>
+                        <small>@'.$row["slug"].'</small>
+                        <p>'.$this->limit_text(strval($row["description"]), 43).'</p>
                       </div>
+                      <ul>
+      									<li><div class="score">
+                          <strong>'.$this->text_rating($row["slug"], 'college').'</strong>
+                          <span class="text-left ml-2">Superb<em>'.$this->total_review_count($row["slug"], "college").' Reviews</em>
+                          </span></div>
+                        </li>
+                        <li><a href="/account/edit/college?slug='.$row["slug"].'" class="btn_add">Update Info</a></li>
+      								</ul>
                     </div>
                   </div>
                 </div>
-              ';
+                ';
               echo $data;
             }
           } else {
@@ -740,26 +799,31 @@
           if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)){
               $data = '
-                <div class="custom-card p-0" style="background-image: url('.$row["cover_image"].')">
-                  <div class="overlay"></div>
-                  <div class="row">
-                    <div class="col-4">
-                      <img class="img-100" src="'.$row["profile_image"].'" alt="" />
+                <div class="strip list_view">
+                  <div class="row no-gutters">
+                    <div class="col-lg-5">
+                      <figure>
+                        <a href="/tuition/'.$row["slug"].'"><img src="'.$row["profile_image"].'" class="img-fluid" alt=""><div class="read_more"><span>Visit Institute</span></div></a>
+                      </figure>
                     </div>
-                    <div class="col-8 text-white account-card-content-wrapper">
-                      <div class="account-card-content">
-                        <h6>'.$row["name"].'</h6>
-                        <p><a href="/tuition/'.$row["slug"].'">@'.$row["slug"].'</a></p>
-                        <div class="mb-4">
-                          <b class="rating">'.$this->text_rating($row["slug"], 'tuition').'</b>
-                          '.$this->get_total_rating($row["slug"], 'tuition').'
-                        </div>
-                        <a href="/account/edit?type=tuition&slug='.$row["slug"].'" class="button">Update Info</a>
+                    <div class="col-lg-7">
+                      <div class="wrapper">
+                        <h3><a href="/tuition/'.$row["slug"].'">'.$row["name"].'</a></h3>
+                        <small>@'.$row["slug"].'</small>
+                        <p>'.$this->limit_text(strval($row["description"]), 43).'</p>
                       </div>
+                      <ul>
+      									<li><div class="score">
+                          <strong>'.$this->text_rating($row["slug"], 'tuition').'</strong>
+                          <span class="text-left ml-2">Superb<em>'.$this->total_review_count($row["slug"], "tuition").' Reviews</em>
+                          </span></div>
+                        </li>
+                        <li><a href="/account/edit/tuition?slug='.$row["slug"].'" class="btn_add">Update Info</a></li>
+      								</ul>
                     </div>
                   </div>
                 </div>
-              ';
+                ';
               echo $data;
             }
           } else {
@@ -778,27 +842,31 @@
           if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)){
               $data = '
-                <div class="custom-card p-0" style="background-image: url('.$row["cover_image"].')">
-                  <div class="overlay"></div>
-                  <div class="row">
-                    <div class="col-4">
-                      <img class="img-100" src="'.$row["profile_image"].'" alt="" />
+                <div class="strip list_view">
+                  <div class="row no-gutters">
+                    <div class="col-lg-5">
+                      <figure>
+                        <a href="/job_consultancy/'.$row["slug"].'"><img src="'.$row["profile_image"].'" class="img-fluid" alt=""><div class="read_more"><span>Visit Institute</span></div></a>
+                      </figure>
                     </div>
-                    <div class="col-8 text-white account-card-content-wrapper">
-                      <div class="account-card-content">
-                        <h6>'.$row["name"].'</h6>
-                        <p><a href="/job-consultancy/'.$row["slug"].'">@'.$row["slug"].'</a></p>
-                        <div class="mb-4">
-                          <b class="rating">'.$this->text_rating($row["slug"], 'job_consultancy').'</b>
-                          '.$this->get_total_rating($row["slug"], 'job_consultancy').'
-                        </div>
-                        <a href="/account/edit?type=job_consultancy&slug='.$row["slug"].'" class="button">Update Info</a>
-
+                    <div class="col-lg-7">
+                      <div class="wrapper">
+                        <h3><a href="/job_consultancy/'.$row["slug"].'">'.$row["name"].'</a></h3>
+                        <small>@'.$row["slug"].'</small>
+                        <p>'.$this->limit_text(strval($row["description"]), 43).'</p>
                       </div>
+                      <ul>
+      									<li><div class="score">
+                          <strong>'.$this->text_rating($row["slug"], 'job_consultancy').'</strong>
+                          <span class="text-left ml-2">Superb<em>'.$this->total_review_count($row["slug"], "job_consultancy").' Reviews</em>
+                          </span></div>
+                        </li>
+                        <li><a href="/job_consultancy/edit/college?slug='.$row["slug"].'" class="btn_add">Update Info</a></li>
+      								</ul>
                     </div>
                   </div>
                 </div>
-              ';
+                ';
               echo $data;
             }
           } else {
@@ -974,6 +1042,14 @@
     }
     function safeValue($value) {
       return mysqli_real_escape_string($this->db, $value);
+    }
+    function limit_text($text, $limit) {
+      if (str_word_count($text, 0) > $limit) {
+          $words = str_word_count($text, 2);
+          $pos = array_keys($words);
+          $text = substr($text, 0, $pos[$limit]) . '...';
+      }
+      return $text;
     }
     function debug_error() {
       $this->debug ? error_log('SQL Error: '.mysqli_error($this->db)) : null ;

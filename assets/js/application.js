@@ -6,6 +6,9 @@
     dmOffCanvasPos: 'dmoffleft'
   });
   $('select.nice').niceSelect();
+	$('.sidenav-pills').theiaStickySidebar({
+		additionalMarginTop: 10
+	});
 
 	$('#write-review-rating').barrating({
         theme: 'bars-square',
@@ -13,7 +16,12 @@
         showSelectedRating: true,
         reverse: false,
         showValues: true,
-      });
+  });
+
+	// PREVENT POST DATA AFTER RESET
+	if ( window.history.replaceState ) {
+		window.history.replaceState( null, null, window.location.href );
+	}
 
 	/* PREBAKED FUNCTIONS */
 	// Sticky nav
